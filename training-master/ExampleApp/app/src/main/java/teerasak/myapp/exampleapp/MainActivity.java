@@ -1,44 +1,29 @@
-package teerasak.myapp.viewsamples;
+package teerasak.myapp.exampleapp;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
-
-    //define Var
-    public EditText email;
-    public TextView label;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final TextView helloText = (TextView) findViewById(R.id.myTextview);
 
-        email = (EditText) findViewById(R.id.editText);
-        label = (TextView) findViewById(R.id.textView);
+        helloText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helloText.setText("Test");
+            }
+        });
+    }
 
-
-    }   //onCreate()
-
-
-    public void changeLabel() {
-        label.setText("Your email is " + email.getText().toString());
-
-    }   //changeLabel();
-
-
-    public void formSubmit(View view) {
-        Toast.makeText(view.getContext(), "Your email is " + email.getText().toString(), Toast.LENGTH_SHORT).show();
-        changeLabel();
-    } // formSubmit()
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
